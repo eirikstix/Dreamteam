@@ -1,0 +1,14 @@
+body{
+    display: flex;
+    height: 100vh;
+    background-color: white;
+    justify-content: center;
+}
+#spillebrett{
+    display: grid;
+    grid-template-columns: auto;
+    grid-column: span 3;
+}
+title{
+    display: none;
+}
