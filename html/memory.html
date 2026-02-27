@@ -127,6 +127,15 @@
 
     <script>
         const boardElm = document.getElementById("memoryBoard")
+
+        const allCards = document.querySelectorAll(".card")
+        console.log(allCards)
+
+        allCards.forEach(card => {
+            card.addEventListener("click", klikk)
+            console.log("Klikk")
+        })
+
     </script>
 </body>
 
