@@ -27,8 +27,8 @@
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(4, 120px);
-            grid-auto-rows: 120px;
+            grid-template-columns: repeat(4, 130px);
+            grid-auto-rows: 130px;
             gap: 10px;
         }
 
@@ -39,8 +39,6 @@
         }
 
         .card {
-            width: 100px;
-            height: 100px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -52,14 +50,15 @@
             object-fit: cover;
             overflow: hidden;
             border-radius: 10px;
+            display: none;
         }
 
         .card:hover {
             transform: scale(1.03);
         }
 
-        .card.flipped {
-            background-color: lightpink;
+        .card.flipped img {
+            display: block;
         }
 
         h1 {
@@ -75,67 +74,75 @@
     <h1> Memory </h1>
     <div class="grid" id="memoryBoard">
         <div class="card">
-            <img src="/bilder/memory/fugl.jpg">
+            <img src="../bilder/memory/fugl.jpg">
         </div>
         <div class="card">
-            <img src="/bilder/memory/geit.jpg">
+            <img src="../bilder/memory/geit.jpg">
         </div>
         <div class="card">
-            <img src="/bilder/memory/hest.jpg">
+            <img src="../bilder/memory/hest.jpg">
         </div>
         <div class="card">
-            <img src="/bilder/memory/hamster.jpg">
+            <img src="../bilder/memory/hamster.jpg">
         </div>
         <div class="card">
-            <img src="/bilder/memory/hest.jpg">
+            <img src="../bilder/memory/hest.jpg">
         </div>
         <div class="card">
-            <img src="/bilder/memory/katt.jpg">
+            <img src="../bilder/memory/katt.jpg">
         </div>
         <div class="card">
-            <img src="/bilder/memory/gris.jpg">
+            <img src="../bilder/memory/gris.jpg">
         </div>
         <div class="card">
-            <img src="/bilder/memory/sel.jpg">
+            <img src="../bilder/memory/sel.jpg">
         </div>
         <div class="card">
-            <img src="/bilder/memory/hamster.jpg">
+            <img src="../bilder/memory/hamster.jpg">
         </div>
         <div class="card">
-            <img src="/bilder/memory/sel.jpg">
+            <img src="../bilder/memory/sel.jpg">
         </div>
         <div class="card">
-            <img src="/bilder/memory/fugl.jpg">
+            <img src="../bilder/memory/fugl.jpg">
         </div>
         <div class="card">
-            <img src="/bilder/memory/hund.jpg">
+            <img src="../bilder/memory/hund.jpg">
         </div>
         <div class="card">
-            <img src="/bilder/memory/katt.jpg">
+            <img src="../bilder/memory/katt.jpg">
         </div>
         <div class="card">
-            <img src="/bilder/memory/hund.jpg">
+            <img src="../bilder/memory/hund.jpg">
         </div>
         <div class="card">
-            <img src="/bilder/memory/gris.jpg">
+            <img src="../bilder/memory/gris.jpg">
         </div>
         <div class="card">
-            <img src="/bilder/memory/geit.jpg">
+            <img src="../bilder/memory/geit.jpg">
         </div>
     </div>
 
-
     <script>
-        const boardElm = document.getElementById("memoryBoard")
-
         const allCards = document.querySelectorAll(".card")
         console.log(allCards)
+        
+        const boardElm = document.getElementById("memoryBoard");
+        [...allCards]
+            .sort(() => Math.random() - 0.5)
+            .forEach(card => boardElm.appendChild(card))
+
 
         allCards.forEach(card => {
-            card.addEventListener("click", klikk)
-            console.log("Klikk")
+            card.addEventListener("click", function () {
+                this.classList.add("flipped");
+            })
         })
 
+        function klikk(event) {
+            console.log("Du klikket")
+            card.classList.add("flipped")
+        }
     </script>
 </body>
 
