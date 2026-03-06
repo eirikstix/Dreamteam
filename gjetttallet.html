@@ -5,49 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gjett tallet</title>
     <link rel="stylesheet" href="css/gjettallet.css">
-    <style>
-        body{
-            text-align: center;
-            margin-top: 50px;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-        input{
-            padding: 10px;
-            font-size: 16px;
-        }
-        button{
-            padding: 10px 20px;
-            font-size: 16px;
-            margin-left: 10px;
-        }
-        
-    </style>
+    
 </head>
-<html>
 <body>
-    <h1>Gjett tallet!</h1>
+<h1>Gjett tallet!</h1>
 <p>Gjett et tall mellom 1 og 100</p>
 
-<input id="guessInput" type="number">
+<input id="sjekk" type="number">
 <button onclick="sjekk()">Gjett</button>
 
 <p id="message"></p>
 
 <button onclick="nyttspill()">Nytt spill</button>
-
+<div><img id="duvant" src="bilder/gjetttallet/duvant.gif" style="display: none; width:300px;">
+</div>
 <script>
-
-let secretNumber = Math.floor(Math.random() * 100) + 1;
+const message = document.getElementById("message")
+let fasit = Math.floor(Math.random() * 100) + 1;
 
 function sjekk(){
 
-let guess = document.getElementById("sjekk").value;
+let Gjett = document.getElementById("sjekk").value;
 let message = document.getElementById("message");
 
-if(guess == secretNumber){
+if(Gjett == fasit){
 message.textContent = "Riktig! Du gjettet tallet!";
+document.getElementById("duvant").style.display = "block";
 }
-else if(guess < secretNumber){
+else if(Gjett < fasit){
 message.textContent = "For lavt";
 }
 else{
@@ -55,12 +40,13 @@ message.textContent = "For høyt";
 }
 
 }
-function newGame(){
+function nyttspill(){
 
-secretNumber = Math.floor(Math.random() * 100) + 1;
+fasit = Math.floor(Math.random() * 100) + 1;
 
 document.getElementById("message").textContent = "";
 document.getElementById("sjekk").value = "";
+document.getElementById("duvant").style.display = "none";
 
 }
 </script>
