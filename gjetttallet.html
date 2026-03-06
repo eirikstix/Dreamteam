@@ -6,6 +6,7 @@
     <title>Gjett tallet</title>
     <link rel="stylesheet" href="css/gjettallet.css">
 </head>
+<html>
 <body>
     <h1>Gjett tallet!</h1>
 <p>Gjett et tall mellom 1 og 100</p>
@@ -16,6 +17,20 @@
 <p id="message"></p>
 
 <button onclick="nyttspill()">Nytt spill</button>
+
+<script>
+
+let secretNumber = Math.floor(Math.random() * 100) + 1;
+
+function checkGuess(){
+
+let guess = document.getElementById("guessInput").value;
+let message = document.getElementById("message");
+}
+
+
+</script>
+
     
 </body>
 </html>
