@@ -1,13 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> 3 små spill </title>
-</head>
+
+    <style>
+        @import url(https://fontawesome.com/icons/caret-down?f=classic&s=solid);
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            background-color: rgb(226, 115, 154);
+            color: white;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 400px);
+            gap: 10px;
+        }
+
+        .spill {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .spill img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            overflow: hidden;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .spill:hover {
+            transform: scale(1.03);
+        }
+        img {
+            width: 30px;
+        }
+
+        article p {
+            display: none;
+        }
+
+        article.show p {
+            display: block;
+        }
+
+        article .minus {
+            display: none;
+        }
+
+        article.show .minus {
+            display: block;
+        }
+
+        article .plus {
+            display: block;
+        }
+
+        article.show .plus {
+            display: none;
+        }
+    </style>
+
 
 <body>
-    <h1> Dreamteam </h1>
+    <h1> Dreamteams 3 småspill </h1>
     <h2> Velg deg et spill </h2>
 
     <section class="grid">
@@ -15,6 +83,7 @@
             <h3> Gjettallet </h3>
             <img src="">
             <div id="spillregler"> Spillregler </div>
+            <i class="fa-solid fa-caret-down"></i> 
         </div>
 
         <div class="spill">
@@ -33,8 +102,9 @@
 
     <script>
         const reglerElm = document.getElementById("spillregler")
-        
+
     </script>
 
 </body>
+
 </html>
