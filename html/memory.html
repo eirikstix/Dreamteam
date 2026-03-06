@@ -132,9 +132,20 @@
         let lock = false
 
         const boardElm = document.getElementById("memoryBoard");
+        // Lager en kopi av lista:
+        const allCardsCopy = Array.from(allCards);
+        // Suffler den tilfeldig:
+        allCardsCopy.sort(() => Math.random() - 0.5)
+        // Legger dem ut på bordet:
+        allCards.forEach(card => {
+             boardElm.appendChild(card)
+        });
+
+        /*
         [...allCards]
             .sort(() => Math.random() - 0.5)
             .forEach(card => boardElm.appendChild(card))
+            */
 
 
         allCards.forEach(card => {
