@@ -4,11 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> index </title>
+
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            background-color: rgb(226, 115, 154);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 400px);
+            gap: 10px;
+        }
+
+        .spill {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .spill img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            overflow: hidden;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .spill:hover {
+            transform: scale(1.03);
+        }
+    </style>
 </head>
 
 <body>
     <h1> Dreamteam </h1>
     <h2> Velg deg et spill </h2>
+
+    <section class="grid">
+        <div class="spill">
+            <h3> Gjettallet </h3>
+            <img src="">
+            <div id="spillregler"> Spillregler </div>
+        </div>
+
+        <div class="spill">
+            <h3> Memory </h3>
+            <img src="">
+            <div id="spillregler"> Spillregler </div>
+        </div>
+
+        <div class="spill">
+            <h3> Rock Paper Scissors </h3>
+            <img src="">
+            <div id="spillregler"> Spillregler </div>
+        </div>
+    </section>
+
+
+    <script>
+        const reglerElm = document.getElementById("spillregler")
+        
+    </script>
 
 </body>
 </html>
