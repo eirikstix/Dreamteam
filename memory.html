@@ -1,20 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Memory </title>
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+        .nunito {
+            font-family: "Nunito", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: weight;
+            font-style: normal;
+        }
+
         body {
             display: flex;
-            
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            background-color: rgb(115, 193, 226);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 130px);
+            grid-auto-rows: 130px;
+            gap: 10px;
+        }
+
+        .grid div {
+            border: 3px solid white;
+            border-radius: 10px;
+            background-color: rgb(30, 98, 128);
+        }
+
+        .card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            overflow: hidden;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+        }
+
+        .card.flipped img {
+            display: block;
+        }
+
+        h1 {
+            font-family: "Nunito", sans-serif;
+            font-weight: 500;
+            font-size: 50px;
+            color: white;
         }
     </style>
 </head>
 
 <body>
     <h1> Memory </h1>
+    <div class="grid" id="memoryBoard">
+        <div class="card">
+            <img src="../bilder/memory/fugl.jpg">
+        </div>
+        <div class="card">
+            <img src="../bilder/memory/geit.jpg">
+        </div>
+        <div class="card">
+            <img src="../bilder/memory/hest.jpg">
+        </div>
+        <div class="card">
+            <img src="../bilder/memory/hamster.jpg">
+        </div>
+        <div class="card">
+            <img src="../bilder/memory/hest.jpg">
+        </div>
+        <div class="card">
+            <img src="../bilder/memory/katt.jpg">
+        </div>
+        <div class="card">
+            <img src="../bilder/memory/gris.jpg">
+        </div>
+        <div class="card">
+            <img src="../bilder/memory/sel.jpg">
+        </div>
+        <div class="card">
+            <img src="../bilder/memory/hamster.jpg">
+        </div>
+        <div class="card">
+            <img src="../bilder/memory/sel.jpg">
+        </div>
+        <div class="card">
+            <img src="../bilder/memory/fugl.jpg">
+        </div>
+        <div class="card">
+            <img src="../bilder/memory/hund.jpg">
+        </div>
+        <div class="card">
+            <img src="../bilder/memory/katt.jpg">
+        </div>
+        <div class="card">
+            <img src="../bilder/memory/hund.jpg">
+        </div>
+        <div class="card">
+            <img src="../bilder/memory/gris.jpg">
+        </div>
+        <div class="card">
+            <img src="../bilder/memory/geit.jpg">
+        </div>
+    </div>
 
+    <script>
+        const allCards = document.querySelectorAll(".card")
+        console.log(allCards)
+
+        let firstCard = null
+        let secondcard = null
+        let lock = false
+
+        const boardElm = document.getElementById("memoryBoard");
+        // Lager en kopi av lista:
+        const allCardsCopy = Array.from(allCards);
+        // Suffler den tilfeldig:
+        allCardsCopy.sort(() => Math.random() - 0.5)
+        // Legger dem ut på bordet:
+        allCards.forEach(card => {
+             boardElm.appendChild(card)
+        });
+
+        /*
+        [...allCards]
+            .sort(() => Math.random() - 0.5)
+            .forEach(card => boardElm.appendChild(card))
+            */
+
+
+        allCards.forEach(card => {
+            card.addEventListener("click", function () {
+                this.classList.add("flipped")
+
+                if (!firstCard) {
+                    firstCard = this
+                } else {
+                    secondCard = this
+                    sjekkMatch()
+                }
+            })
+        })
+
+
+        function sjekkMatch() {
+            const img1 = firstCard.querySelector("img").src
+            const img2 = secondCard.querySelector("img").src
+
+            if (img1 === img2) {
+                firstCard = null
+                secondCard = null
+            }
+
+            else {
+                lock = true;
+
+                setTimeout(() => {
+                    firstCard.classList.remove("flipped");
+                    secondCard.classList.remove("flipped");
+                    firstCard = null;
+                    secondCard = null;
+                    lock = false;
+                }, 800);
+            }
+        }
+
+
+    </script>
 </body>
+
 </html>
