@@ -8,14 +8,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
         body {
+            font-family: "Nunito", sans-serif;
             height: 100vh;
             background-color: rgb(226, 115, 154);
             color: white;
         }
 
+        h1 {
+            text-decoration: underline;
+            font-size: 50px;
+        }
+
         .overskrift {
-            height: 300px;
+            height: 400px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -62,8 +70,16 @@
             gap: 10px;
         }
 
-        .spill:hover {
+        p {
+            margin-left: 30px;
+        }
+
+        h3:hover {
             transform: scale(1.03);
+        }
+
+        i {
+            cursor: pointer;
         }
 
         article p {
@@ -94,15 +110,14 @@
 
 <body>
     <section class="overskrift">
-        <h1> Dreamteams 3 småspill! </h1>
-        <h2> Velg deg et spill </h2>
+        <h1> Dreamteams 3 småspill </h1>
+        <h2> Velg deg et spill! </h2>
     </section>
 
 
     <section class="grid">
         <div class="spill">
-            <h3> Gjettallet </h3>
-            <img src="">
+            <h3 href="gjetttallet.html"> Gjettallet </h3>
             <article onclick="klikk(this)">
                 <div class="spillregler">
                     <h4> Spillregler </h4>
@@ -122,8 +137,7 @@
         </div>
 
         <div class="spill">
-            <h3> Memory </h3>
-            <img src="">
+            <h3 href="memory.html"> Memory </h3>
             <article onclick="klikk(this)">
                 <div class="spillregler">
                     <h4> Spillregler </h4>
@@ -135,16 +149,15 @@
                     </div>
                 </div>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia voluptatum non ex reprehenderit
-                    blanditiis aut voluptate quos totam ipsa. Velit beatae in cum illo deleniti inventore quas ipsa fuga
-                    tempore.
+                    Memory er et klassisk huskespill hvor målet er å samle flest par. Alle bildekort legges med forsiden
+                    ned, og spillere snur to kort om gangen for å finne like motiver. Ved likt par, beholdes kortene og
+                    man får en ny tur. Hvis ikke, snus kortene tilbake, og neste spiller tar over.
                 </p>
             </article>
         </div>
 
         <div class="spill">
             <h3> Rock Paper Scissors </h3>
-            <img src="">
             <article onclick="klikk(this)">
                 <div class="spillregler">
                     <h4> Spillregler </h4>
