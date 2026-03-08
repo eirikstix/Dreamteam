@@ -25,14 +25,14 @@
             background-color: rgb(115, 193, 226);
         }
 
-        .grid {
+        .memorygrid {
             display: grid;
             grid-template-columns: repeat(4, 130px);
             grid-auto-rows: 130px;
             gap: 10px;
         }
 
-        .grid div {
+        .memorygrid div {
             border: 3px solid white;
             border-radius: 10px;
             background-color: rgb(30, 98, 128);
@@ -67,68 +67,93 @@
             font-size: 50px;
             color: white;
         }
+
+        button {
+            padding: 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        .container {
+            display: flex;
+            width: 300px;
+            margin-top: 20px;
+            justify-content: space-between;
+        }
+
     </style>
 </head>
 
 <body>
     <h1> Memory </h1>
-    <div class="grid" id="memoryBoard">
+    <div class="memorygrid" id="memoryBoard">
         <div class="card">
-            <img src="../bilder/memory/fugl.jpg">
+            <img src="bilder/memory/fugl.jpg">
         </div>
         <div class="card">
-            <img src="../bilder/memory/geit.jpg">
+            <img src="bilder/memory/geit.jpg">
         </div>
         <div class="card">
-            <img src="../bilder/memory/hest.jpg">
+            <img src="bilder/memory/hest.jpg">
         </div>
         <div class="card">
-            <img src="../bilder/memory/hamster.jpg">
+            <img src="bilder/memory/hamster.jpg">
         </div>
         <div class="card">
-            <img src="../bilder/memory/hest.jpg">
+            <img src="bilder/memory/hest.jpg">
         </div>
         <div class="card">
-            <img src="../bilder/memory/katt.jpg">
+            <img src="bilder/memory/katt.jpg">
         </div>
         <div class="card">
-            <img src="../bilder/memory/gris.jpg">
+            <img src="bilder/memory/gris.jpg">
         </div>
         <div class="card">
-            <img src="../bilder/memory/sel.jpg">
+            <img src="bilder/memory/sel.jpg">
         </div>
         <div class="card">
-            <img src="../bilder/memory/hamster.jpg">
+            <img src="bilder/memory/hamster.jpg">
         </div>
         <div class="card">
-            <img src="../bilder/memory/sel.jpg">
+            <img src="bilder/memory/sel.jpg">
         </div>
         <div class="card">
-            <img src="../bilder/memory/fugl.jpg">
+            <img src="bilder/memory/fugl.jpg">
         </div>
         <div class="card">
-            <img src="../bilder/memory/hund.jpg">
+            <img src="bilder/memory/hund.jpg">
         </div>
         <div class="card">
-            <img src="../bilder/memory/katt.jpg">
+            <img src="bilder/memory/katt.jpg">
         </div>
         <div class="card">
-            <img src="../bilder/memory/hund.jpg">
+            <img src="bilder/memory/hund.jpg">
         </div>
         <div class="card">
-            <img src="../bilder/memory/gris.jpg">
+            <img src="bilder/memory/gris.jpg">
         </div>
         <div class="card">
-            <img src="../bilder/memory/geit.jpg">
+            <img src="bilder/memory/geit.jpg">
         </div>
+    </div>
+    <div class="container">
+            <h2> Antall forsøk: </h2>
+            <h2 id="teller"> 0 </h2>
+        </div>
+        <button onclick="nyRunde()"> Ny runde </button>
     </div>
 
     <script>
         const allCards = document.querySelectorAll(".card")
         console.log(allCards)
 
+        let teller = 0
+        const tellerElm = document.getElementById("teller")
+
         let firstCard = null
-        let secondcard = null
+        let secondCard = null
         let lock = false
 
         const boardElm = document.getElementById("memoryBoard");
@@ -137,15 +162,9 @@
         // Suffler den tilfeldig:
         allCardsCopy.sort(() => Math.random() - 0.5)
         // Legger dem ut på bordet:
-        allCards.forEach(card => {
-             boardElm.appendChild(card)
+        allCardsCopy.forEach(card => {
+            boardElm.appendChild(card)
         });
-
-        /*
-        [...allCards]
-            .sort(() => Math.random() - 0.5)
-            .forEach(card => boardElm.appendChild(card))
-            */
 
 
         allCards.forEach(card => {
@@ -156,6 +175,9 @@
                     firstCard = this
                 } else {
                     secondCard = this
+
+                    teller += 1 
+                    tellerElm.innerHTML = teller
                     sjekkMatch()
                 }
             })
@@ -182,6 +204,10 @@
                     lock = false;
                 }, 800);
             }
+        }
+
+        function nyRunde() {
+            location.reload()
         }
 
 
