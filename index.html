@@ -5,31 +5,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> 3 små spill </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
-        @import url(https://fontawesome.com/icons/caret-down?f=classic&s=solid);
-
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
             height: 100vh;
-            flex-direction: column;
             background-color: rgb(226, 115, 154);
             color: white;
         }
-        
+
+        .overskrift {
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
         .grid {
+            display: flex;
             display: grid;
             grid-template-columns: repeat(3, 400px);
-            gap: 10px;
+            justify-content: center;
+            gap: 40px;
         }
 
         .spill {
             display: flex;
-            align-items: center;
-            justify-content: center;
             flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h3 {
+            background-color: white;
+            border-radius: 10px;
+            padding: 10px;
+            padding-left: 50px;
+            padding-right: 50px;
+            color: black;
         }
 
         .spill img {
@@ -41,11 +55,15 @@
             display: none;
         }
 
+        .spillregler {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
         .spill:hover {
             transform: scale(1.03);
-        }
-        img {
-            width: 30px;
         }
 
         article p {
@@ -72,37 +90,85 @@
             display: none;
         }
     </style>
-
+</head>
 
 <body>
-    <h1> Dreamteams 3 småspill </h1>
-    <h2> Velg deg et spill </h2>
+    <section class="overskrift">
+        <h1> Dreamteams 3 småspill! </h1>
+        <h2> Velg deg et spill </h2>
+    </section>
+
 
     <section class="grid">
         <div class="spill">
             <h3> Gjettallet </h3>
             <img src="">
-            <div id="spillregler"> Spillregler </div>
-            <i class="fa-solid fa-caret-down"></i> 
+            <article onclick="klikk(this)">
+                <div class="spillregler">
+                    <h4> Spillregler </h4>
+                    <div class="minus">
+                        <i class="fa-solid fa-circle-minus"></i>
+                    </div>
+                    <div class="plus">
+                        <i class="fa-solid fa-circle-plus"></i>
+                    </div>
+                </div>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia voluptatum non ex reprehenderit
+                    blanditiis aut voluptate quos totam ipsa. Velit beatae in cum illo deleniti inventore quas ipsa fuga
+                    tempore.
+                </p>
+            </article>
         </div>
 
         <div class="spill">
             <h3> Memory </h3>
             <img src="">
-            <div id="spillregler"> Spillregler </div>
+            <article onclick="klikk(this)">
+                <div class="spillregler">
+                    <h4> Spillregler </h4>
+                    <div class="minus">
+                        <i class="fa-solid fa-circle-minus"></i>
+                    </div>
+                    <div class="plus">
+                        <i class="fa-solid fa-circle-plus"></i>
+                    </div>
+                </div>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia voluptatum non ex reprehenderit
+                    blanditiis aut voluptate quos totam ipsa. Velit beatae in cum illo deleniti inventore quas ipsa fuga
+                    tempore.
+                </p>
+            </article>
         </div>
 
         <div class="spill">
             <h3> Rock Paper Scissors </h3>
             <img src="">
-            <div id="spillregler"> Spillregler </div>
+            <article onclick="klikk(this)">
+                <div class="spillregler">
+                    <h4> Spillregler </h4>
+                    <div class="minus">
+                        <i class="fa-solid fa-circle-minus"></i>
+                    </div>
+                    <div class="plus">
+                        <i class="fa-solid fa-circle-plus"></i>
+                    </div>
+                </div>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia voluptatum non ex reprehenderit
+                    blanditiis aut voluptate quos totam ipsa. Velit beatae in cum illo deleniti inventore quas ipsa fuga
+                    tempore.
+                </p>
+            </article>
         </div>
     </section>
 
 
     <script>
-        const reglerElm = document.getElementById("spillregler")
-
+        function klikk(element) {
+            element.classList.toggle("show")
+        }
     </script>
 
 </body>
