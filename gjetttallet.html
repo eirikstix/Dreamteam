@@ -10,6 +10,7 @@
 <body>
 <h1>Gjett tallet!</h1>
 <p>Gjett et tall mellom 1 og 100</p>
+<p>Antall forsøk: <span id="forsok">0</span></p>
 
 <input id="sjekk" type="number">
 <button onclick="sjekk()">Gjett</button>
@@ -22,11 +23,14 @@
 <script>
 const message = document.getElementById("message")
 let fasit = Math.floor(Math.random() * 100) + 1;
+let forsok = 0;
 
 function sjekk(){
 
 let Gjett = document.getElementById("sjekk").value;
 let message = document.getElementById("message");
+forsok+=1;
+document.getElementById("forsok").textContent = forsok;
 
 if(Gjett == fasit){
 message.textContent = "Riktig! Du gjettet tallet!";
@@ -47,7 +51,8 @@ fasit = Math.floor(Math.random() * 100) + 1;
 document.getElementById("message").textContent = "";
 document.getElementById("sjekk").value = "";
 document.getElementById("duvant").style.display = "none";
-
+forsøk = 0;
+document.getElementById("forsok").textContent = forsok;
 }
 </script>
 
