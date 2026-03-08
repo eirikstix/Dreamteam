@@ -23,6 +23,7 @@
             height: 100vh;
             flex-direction: column;
             background-color: rgb(115, 193, 226);
+            font-family: "Nunito", sans-serif;
         }
 
         .memorygrid {
@@ -62,15 +63,16 @@
         }
 
         h1 {
-            font-family: "Nunito", sans-serif;
             font-weight: 500;
             font-size: 50px;
             color: white;
+            text-decoration: underline;
         }
 
         button {
             padding: 20px;
             font-size: 16px;
+            border: 3px solid black;
             border-radius: 8px;
             background-color: white;
             cursor: pointer;
@@ -78,9 +80,13 @@
 
         .container {
             display: flex;
-            width: 300px;
             margin-top: 20px;
-            justify-content: space-between;
+            gap: 50px;
+        }
+
+        h2 {
+            display: flex;
+            gap: 10px;
         }
 
     </style>
@@ -139,9 +145,10 @@
         </div>
     </div>
     <div class="container">
-            <h2> Antall forsøk: </h2>
-            <h2 id="teller"> 0 </h2>
-        </div>
+        <h2>
+            <div> Antall forsøk: </div>
+            <div id="teller"> 0 </div>
+        </h2>
         <button onclick="nyRunde()"> Ny runde </button>
     </div>
 
@@ -169,6 +176,9 @@
 
         allCards.forEach(card => {
             card.addEventListener("click", function () {
+
+                if (lock) return 
+                
                 this.classList.add("flipped")
 
                 if (!firstCard) {
@@ -191,6 +201,8 @@
             if (img1 === img2) {
                 firstCard = null
                 secondCard = null
+
+                sjekkVinner()
             }
 
             else {
@@ -203,6 +215,15 @@
                     secondCard = null;
                     lock = false;
                 }, 800);
+            }
+        }
+
+        function sjekkVinner() {
+            const flippedCards = document.querySelectorAll(".flipped")
+            const forsokElm = document.querySelector("h2")
+
+            if (flippedCards.length === 16) {
+                forsokElm.innerHTML = "Du vant på " + teller + " forsøk!"
             }
         }
 
